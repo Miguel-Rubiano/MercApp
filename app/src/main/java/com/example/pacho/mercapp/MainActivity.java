@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -101,19 +102,25 @@ public class MainActivity extends AppCompatActivity
         Fragment miFragment=null;
         boolean fragmentSeleccionado=false;
 
-        if (id == R.id.nav_camera) {
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        if (id == R.id.navProductos) {
             miFragment=new ContenedorFragment();
             fragmentSeleccionado=true;
 
-        } else if (id == R.id.nav_gallery) {
+            fragmentManager.beginTransaction().replace(R.id.content_main, new ProductoFragment()).commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.navCarrito) {
 
-        } else if (id == R.id.nav_manage) {
+            fragmentManager.beginTransaction().replace(R.id.content_main, new CarritoFragment()).commit();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.navPedidos) {
 
-        } else if (id == R.id.nav_send) {
+            fragmentManager.beginTransaction().replace(R.id.content_main, new PedidoFragment()).commit();
+
+        }  else if (id == R.id.navNotificacion) {
+
+
+        } else if (id == R.id.navCerrar) {
 
         }
 
